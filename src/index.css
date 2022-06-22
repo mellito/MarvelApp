@@ -52,6 +52,7 @@
 
 .login-left {
   flex-grow: 1;
+  object-fit: fill;
 }
 
 .login-right {
