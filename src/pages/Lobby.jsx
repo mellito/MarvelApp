@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchData } from "./utils/fetchdata";
-
+import { fetchData } from "../utils/fechdata";
+import NavBar from "../components/NavBar";
 const Lobby = () => {
   const [marvelData, setMarvelData] = useState([]);
   useEffect(() => {
@@ -8,13 +8,17 @@ const Lobby = () => {
       const data = await fetchData(
         "http://gateway.marvel.com/v1/public/characters?",
       );
-      console.log(data);
       setMarvelData(data.data.results);
     };
     fetchAPI();
   }, []);
 
-  return <div>Lobby</div>;
+  return (
+    <main className="main lobby">
+      <NavBar />
+      <p>Lobby</p>
+    </main>
+  );
 };
 
 export default Lobby;

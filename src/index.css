@@ -8,11 +8,17 @@
 :root {
   --color-primary: #ce1518;
   --color-secondary: #fdfdfd;
+  --a-color: #0d01bb;
+  --bgcolor-primary: #a3a3a3;
   --font-mavel: "Marvel", sans-serif;
 }
 
 .font-24 {
   font-size: 24px;
+}
+
+.font-bold {
+  font-weight: bold;
 }
 
 .input-login {
@@ -26,7 +32,6 @@
 .button-login {
   background-color: var(--color-primary);
   color: var(--color-secondary);
-  font-weight: bold;
   cursor: pointer;
 }
 
@@ -38,16 +43,17 @@
   place-content: center;
 }
 
-.width-100 {
-  width: 100%;
-}
-
 .grid {
   display: grid;
 }
 
-.login {
+.main {
   height: 100vh;
+  position: relative;
+}
+
+.main .lobby {
+  background-color: var(--bgcolor-primary);
 }
 
 .login-left {
@@ -81,7 +87,31 @@
   color: var(--color-primary);
   text-align: center;
   text-transform: capitalize;
-  font-weight: bold;
+}
+
+.navbar {
+  font-family: var(--font-mavel);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+.nav-user {
+  font-size: 20px;
+  color: var(--color-primary);
+  text-transform: capitalize;
+}
+
+.nav-bar {
+  list-style: none;
+}
+.nav-bar li a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.nav-bar li a:hover {
+  color: var(--a-color);
 }
 
 @media (max-width: 768px) {

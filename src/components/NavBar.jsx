@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 const NavBar = () => {
-  const [user, setUser] = useState(null);
-  if (localStorage.getItem("user")) {
-    setUser(JSON.parse(localStorage.getItem("user")));
-  }
+  const [user] = useState(JSON.parse(localStorage.getItem("user")));
   const elements = [
     {
       name: `cerrar sesión`,
@@ -17,20 +14,19 @@ const NavBar = () => {
     },
   ];
   return (
-    <nav>
+    <nav className="navbar flex">
+      <p className="nav-user font-bold">
+        bienvenido {user.name} {user.lastname}
+      </p>
+
       <ul className="nav-bar">
-        {elements.map((element) => {
-          return (
-            <li key={element.name}>
-              <p>
-                bienvenido {user.name} {user.lastname}
-              </p>
-              <Link to={element.link} onClick={element.action.closeSession}>
-                {element.name}
-              </Link>
-            </li>
-          );
-        })}
+        {elements.map((element) => (
+          <li key={element.name}>
+            <Link to={element.link} onClick={element.action.closeSession}>
+              {element.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
