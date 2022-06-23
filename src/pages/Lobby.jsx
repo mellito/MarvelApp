@@ -13,7 +13,7 @@ const Lobby = () => {
   useEffect(() => {
     const fetchAPI = async () => {
       const data = await fetchData(
-        "http://gateway.marvel.com/v1/public/characters",
+        "https://gateway.marvel.com/v1/public/characters",
         0,
       );
 
@@ -25,7 +25,7 @@ const Lobby = () => {
   const fetchMoreData = async () => {
     setPages((prevPages) => prevPages + 1);
     const data = await fetchData(
-      "http://gateway.marvel.com/v1/public/characters",
+      "https://gateway.marvel.com/v1/public/characters",
       pages,
     );
     setMarvelData([...marvelData, ...data.data.results]);

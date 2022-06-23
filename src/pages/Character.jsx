@@ -17,7 +17,7 @@ const Character = () => {
   useEffect(() => {
     const fetchAPI = async () => {
       const data = await fetchData(
-        `http://gateway.marvel.com/v1/public/characters/${id}/comics`,
+        `https://gateway.marvel.com/v1/public/characters/${id}/comics`,
         0,
       );
       setComicsCharacter(data.data.results);
@@ -25,7 +25,7 @@ const Character = () => {
 
     const fechCharacter = async () => {
       const data = await fetchCharacterbyId(
-        `http://gateway.marvel.com/v1/public/characters/${id}`,
+        `https://gateway.marvel.com/v1/public/characters/${id}`,
       );
 
       setCharacter(data.data.results[0]);
@@ -37,7 +37,7 @@ const Character = () => {
   const fetchMoreData = async () => {
     setPages((prevPages) => prevPages + 1);
     const data = await fetchData(
-      `http://gateway.marvel.com/v1/public/characters/${id}/comics`,
+      `https://gateway.marvel.com/v1/public/characters/${id}/comics`,
       pages,
     );
 
