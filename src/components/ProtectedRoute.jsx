@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }) => {
     return children;
   }
   return (
-    <div>
+    <div className="login-right main grid  grid-center nav-user">
       <p>No tienes permisos para ver esta página</p>
       <Link to={HOME_ROUTE}>Volver a inicio</Link>
     </div>

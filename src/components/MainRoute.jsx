@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { HOME_ROUTE } from "./Routes";
-import { CHARACTERS_ROUTE } from "./Routes";
+import { CHARACTER_ROUTE, HOME_ROUTE, CHARACTERS_ROUTE } from "./Routes";
 
 import Home from "../pages/Home";
 import Lobby from "../pages/Lobby";
+import Character from "../pages/Character";
+
 import ProtectedRoute from "./ProtectedRoute";
 import LobbyRedirect from "./LobbyRedirect";
 const MainRoute = () => {
@@ -28,6 +29,7 @@ const MainRoute = () => {
             </ProtectedRoute>
           }
         />
+        <Route path={CHARACTER_ROUTE} element={<Character />} />
       </Routes>
     </BrowserRouter>
   );

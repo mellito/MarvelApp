@@ -8,7 +8,7 @@ const LobbyRedirect = ({ children }) => {
     if (localStorage.getItem("user")) {
       return navigate(CHARACTERS_ROUTE);
     }
-  }, []);
+  }, [navigate]);
 
   return children;
 };

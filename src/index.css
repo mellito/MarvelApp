@@ -1,16 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,400;0,700;1,700&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 :root {
   --color-primary: #ce1518;
   --color-secondary: #fdfdfd;
   --a-color: #0d01bb;
   --bgcolor-primary: #a3a3a3;
+  --color-black: #000;
   --font-mavel: "Marvel", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-mavel);
 }
 
 .font-24 {
@@ -22,7 +23,6 @@
 }
 
 .input-login {
-  font-family: var(--font-mavel);
   background-color: var(--color-secondary);
   padding: 10px;
   outline: none;
@@ -90,7 +90,6 @@
 }
 
 .navbar {
-  font-family: var(--font-mavel);
   position: absolute;
   top: 10px;
   right: 10px;
@@ -98,7 +97,7 @@
   align-items: center;
 }
 .nav-user {
-  font-size: 20px;
+  font-size: 28px;
   color: var(--color-primary);
   text-transform: capitalize;
 }
@@ -114,8 +113,60 @@
   color: var(--a-color);
 }
 
+.character-card {
+  min-height: 350px;
+  background-color: var(--color-secondary);
+  border-radius: 10px;
+  display: flex;
+  text-decoration: none;
+}
+.character-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.character-card img {
+  width: 50%;
+  object-fit: fill;
+  border-radius: 10px 0 0 10px;
+}
+
+.character-card section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 20px;
+}
+
+.character-card section p:nth-child(1) {
+  color: var(--color-primary);
+}
+.character-card section p:nth-child(2) {
+  color: var(--color-black);
+}
+
+.character-card section p:nth-child(3) {
+  color: var(--a-color);
+}
+.container-es {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 10px;
+  padding: 5px;
+}
+
+.lobby-title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 15vh;
+}
+
 @media (max-width: 768px) {
   .login-left {
     display: none;
+  }
+  .navbar {
+    position: relative;
   }
 }
