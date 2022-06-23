@@ -18,6 +18,7 @@ const NavBar = () => {
       <p className="nav-user font-bold">
         bienvenido {user.name} {user.lastname}
       </p>
+      <p>{user.email}</p>
 
       <ul className="nav-bar">
         {elements.map((element) => (
