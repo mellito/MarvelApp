@@ -61,7 +61,7 @@ const Character = () => {
 
             {character.description ? (
               <p className=" info-character--despcription font-bold">
-                {character.description.substring(0, 200)}
+                {character.description}
               </p>
             ) : (
               <p className=" info-character--despcription font-bold">
