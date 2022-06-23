@@ -14,13 +14,18 @@ const Character = () => {
   const [hastrue, setHasTrue] = useState(true);
   const [comicsCharacter, setComicsCharacter] = useState([]);
   const [character, setCharacter] = useState(null);
+  const [error, setError] = useState("");
   useEffect(() => {
     const fetchAPI = async () => {
       const data = await fetchData(
         `https://gateway.marvel.com/v1/public/characters/${id}/comics`,
         0,
       );
-      setComicsCharacter(data.data.results);
+      if (!data.message) {
+        setComicsCharacter(data.data.results);
+      } else {
+        setError(data.message);
+      }
     };
 
     const fechCharacter = async () => {
@@ -28,7 +33,11 @@ const Character = () => {
         `https://gateway.marvel.com/v1/public/characters/${id}`,
       );
 
-      setCharacter(data.data.results[0]);
+      if (!data.message) {
+        setCharacter(data.data.results[0]);
+      } else {
+        setError(data.message);
+      }
     };
     fechCharacter();
     fetchAPI();
@@ -41,7 +50,12 @@ const Character = () => {
       pages,
     );
 
-    setComicsCharacter([...comicsCharacter, ...data.data.results]);
+    if (!data.message) {
+      setComicsCharacter([...comicsCharacter, ...data.data.results]);
+    } else {
+      setError(data.message);
+    }
+
     if (data.data.results.length === 0 || data.data.results.length < 20) {
       setHasTrue(false);
     }
@@ -53,7 +67,8 @@ const Character = () => {
       <div className="flex character-container__info ">
         {character && (
           <section className="container_info-character">
-            <p className=" nav-user font-bold text-center">{character.name} </p>
+            <p className=" nav-user font-bold text-center">{character.name}</p>
+
             <img
               src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
               alt=""
@@ -75,9 +90,14 @@ const Character = () => {
         )}
 
         <section>
-          <p className=" nav-user font-bold text-center ">
-            Comics where appears{" "}
-          </p>
+          {error ? (
+            <p className="  nav-user font-bold">{error}</p>
+          ) : (
+            <p className=" nav-user font-bold text-center ">
+              Comics where appears
+            </p>
+          )}
+
           {comicsCharacter.length > 0 ? (
             <InfiniteScroll
               className="container-es"

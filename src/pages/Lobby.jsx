@@ -9,6 +9,7 @@ const Lobby = () => {
   const [pages, setPages] = useState(1);
   const [marvelData, setMarvelData] = useState([]);
   const [hastrue, setHasTrue] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -17,7 +18,11 @@ const Lobby = () => {
         0,
       );
 
-      setMarvelData(data.data.results);
+      if (!data.message) {
+        setMarvelData(data.data.results);
+      } else {
+        setError(data.message);
+      }
     };
     fetchAPI();
   }, []);
@@ -28,7 +33,13 @@ const Lobby = () => {
       "https://gateway.marvel.com/v1/public/characters",
       pages,
     );
-    setMarvelData([...marvelData, ...data.data.results]);
+
+    if (!data.message) {
+      setMarvelData([...marvelData, ...data.data.results]);
+    } else {
+      setError(data.message);
+    }
+
     if (data.data.results.length === 0 || data.data.results.length < 20) {
       setHasTrue(false);
     }
@@ -37,7 +48,11 @@ const Lobby = () => {
     <main className="bgtemplate ">
       <NavBar />
       <section className="lobby-title text-center  ">
-        <p className=" nav-user font-bold">MARVEL CHARACTERS </p>
+        {error ? (
+          <p className=" nav-user font-bold">{error}</p>
+        ) : (
+          <p className=" nav-user font-bold">MARVEL CHARACTERS </p>
+        )}
       </section>
 
       {marvelData.length > 0 ? (
