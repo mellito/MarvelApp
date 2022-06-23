@@ -6,9 +6,11 @@ const ProtectedRoute = ({ children }) => {
     return children;
   }
   return (
-    <div className="login-right main grid  grid-center nav-user">
-      <p>No tienes permisos para ver esta página</p>
-      <Link to={HOME_ROUTE}>Volver a inicio</Link>
+    <div className="bgtemplate main grid  grid-center nav-user">
+      <p>not allaow to see this page, need to login</p>
+      <Link className="marvel-button" to={HOME_ROUTE}>
+        Back to home
+      </Link>
     </div>
   );
 };

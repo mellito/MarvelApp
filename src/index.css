@@ -35,6 +35,10 @@
   cursor: pointer;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .flex {
   display: flex;
 }
@@ -52,22 +56,28 @@
   position: relative;
 }
 
-.main .lobby {
-  background-color: var(--bgcolor-primary);
-}
-
 .login-left {
   flex-grow: 1;
   object-fit: fill;
 }
-
-.login-right {
+.flexgrow9 {
   flex-grow: 9;
+}
+.bgtemplate {
   background-image: url("https://wallpapercave.com/wp/wp3173982.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-origin: initial;
+}
+
+.marvel-button {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 15px;
+  text-align: center;
 }
 
 .home {
@@ -90,15 +100,12 @@
 }
 
 .navbar {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  padding-right: 20px;
 }
 .nav-user {
   font-size: 28px;
-  color: var(--color-primary);
   text-transform: capitalize;
 }
 
@@ -109,43 +116,45 @@
   color: var(--color-primary);
   text-decoration: none;
 }
+
 .nav-bar li a:hover {
   color: var(--a-color);
 }
 
-.character-card {
+.card {
   min-height: 350px;
   background-color: var(--color-secondary);
+  border: 1px solid var(--color-primary);
   border-radius: 10px;
   display: flex;
   text-decoration: none;
 }
-.character-card:hover {
+.card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.character-card img {
+.card img {
   width: 50%;
   object-fit: fill;
   border-radius: 10px 0 0 10px;
 }
 
-.character-card section {
+.card section {
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   text-align: center;
   padding: 20px;
 }
 
-.character-card section p:nth-child(1) {
+.card section p:nth-child(1) {
   color: var(--color-primary);
 }
-.character-card section p:nth-child(2) {
+.card section p:nth-child(2) {
   color: var(--color-black);
 }
 
-.character-card section p:nth-child(3) {
+.card section p:nth-child(3) {
   color: var(--a-color);
 }
 .container-es {
@@ -154,12 +163,41 @@
   gap: 10px;
   padding: 5px;
 }
-
-.lobby-title {
-  display: flex;
+.character-container__info {
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-end;
-  height: 15vh;
+}
+
+.container_info-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container_info-character a {
+  text-decoration: none;
+  background-color: var(--color-primary);
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.character-container__info section > img {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  object-fit: fill;
+}
+
+.info-character--despcription {
+  text-transform: capitalize;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: var(--a-color);
 }
 
 @media (max-width: 768px) {
@@ -167,6 +205,7 @@
     display: none;
   }
   .navbar {
-    position: relative;
+    justify-content: center;
+    align-items: center;
   }
 }

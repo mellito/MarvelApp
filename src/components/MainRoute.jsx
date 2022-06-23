@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { CHARACTER_ROUTE, HOME_ROUTE, CHARACTERS_ROUTE } from "./Routes";
@@ -29,7 +28,14 @@ const MainRoute = () => {
             </ProtectedRoute>
           }
         />
-        <Route path={CHARACTER_ROUTE} element={<Character />} />
+        <Route
+          path={CHARACTER_ROUTE}
+          element={
+            <ProtectedRoute>
+              <Character />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

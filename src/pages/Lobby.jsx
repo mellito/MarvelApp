@@ -9,11 +9,11 @@ const Lobby = () => {
   const [pages, setPages] = useState(1);
   const [marvelData, setMarvelData] = useState([]);
   const [hastrue, setHasTrue] = useState(true);
-  const [comicUri, setComicUri] = useState("");
+
   useEffect(() => {
     const fetchAPI = async () => {
       const data = await fetchData(
-        "http://gateway.marvel.com/v1/public/characters?",
+        "http://gateway.marvel.com/v1/public/characters",
         0,
       );
 
@@ -25,7 +25,7 @@ const Lobby = () => {
   const fetchMoreData = async () => {
     setPages((prevPages) => prevPages + 1);
     const data = await fetchData(
-      "http://gateway.marvel.com/v1/public/characters?",
+      "http://gateway.marvel.com/v1/public/characters",
       pages,
     );
     setMarvelData([...marvelData, ...data.data.results]);
@@ -34,15 +34,15 @@ const Lobby = () => {
     }
   };
   return (
-    <main className="  lobby login-right   ">
+    <main className="bgtemplate ">
       <NavBar />
-      <section className="lobby-title ">
+      <section className="lobby-title text-center  ">
         <p className=" nav-user font-bold">MARVEL CHARACTERS </p>
       </section>
 
       {marvelData.length > 0 ? (
         <InfiniteScroll
-          className="container-es"
+          className="container-es "
           dataLength={marvelData.length}
           next={fetchMoreData}
           hasMore={hastrue}
@@ -54,7 +54,12 @@ const Lobby = () => {
           }
         >
           {marvelData.map((character) => (
-            <Card key={character.id} data={character} />
+            <Card
+              key={character.id}
+              data={character}
+              type="character"
+              linkdirection={`/character/${character.id}`}
+            />
           ))}
         </InfiniteScroll>
       ) : (

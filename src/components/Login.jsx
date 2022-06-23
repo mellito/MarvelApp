@@ -9,7 +9,9 @@ const Login = ({ children }) => {
         alt=""
       />
 
-      <section className="login-right grid grid-center">{children}</section>
+      <section className="bgtemplate flexgrow9 grid grid-center">
+        {children}
+      </section>
     </main>
   );
 };
