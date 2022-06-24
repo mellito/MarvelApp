@@ -14,7 +14,7 @@ const Card = ({ data, type, linkdirection }) => {
         <p className="  font-bold">
           {data.description
             ? data.description.slice(0, 200)
-            : "this character has no description available"}
+            : " has not description available"}
         </p>
         {type === "character" && (
           <p className=" font-bold">

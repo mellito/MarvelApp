@@ -80,7 +80,7 @@ const Character = () => {
               </p>
             ) : (
               <p className=" info-character--despcription font-bold">
-                this comict has not description
+                this character has has not description
               </p>
             )}
             <Link className="marvel-button " to={CHARACTERS_ROUTE}>
