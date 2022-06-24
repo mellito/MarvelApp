@@ -209,4 +209,11 @@
     justify-content: center;
     align-items: center;
   }
+  .character-container__info section > img {
+    width: 80vw;
+  }
+
+  .info-character--despcription {
+    width: 80vw;
+  }
 }
